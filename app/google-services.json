@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "739658114366",
+    "firebase_url": "https://kdektma.firebaseio.com",
+    "project_id": "kdektma",
+    "storage_bucket": "kdektma.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:739658114366:android:554c9de1df3d7eac",
+        "android_client_info": {
+          "package_name": "com.katsamsoft.kdektma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "739658114366-09lnq3g46c9atgdf7b1cciee6ch9b7ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjoK9XFqzgvpEx4ltVH1XQJCVVwjC78RA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "739658114366-09lnq3g46c9atgdf7b1cciee6ch9b7ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
