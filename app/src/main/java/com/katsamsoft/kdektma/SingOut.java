@@ -8,18 +8,57 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 
 public class SingOut extends AppCompatActivity {
 
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
+    private NavigationView navigationView;
+
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_nav_drawe);
+        drawerLayout = (DrawerLayout) findViewById(R.id.activity_nav_drawer);
+//
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        navigationView = (NavigationView) findViewById(R.id.nv);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch(id)
+                {
+                    case R.id.a:
+                        Toast.makeText(SingOut.this, "My Account",Toast.LENGTH_SHORT).show();break;
+                    case R.id.b:
+                        Toast.makeText(SingOut.this, "Settings",Toast.LENGTH_SHORT).show();break;
+                    case R.id.c:
+                        Toast.makeText(SingOut.this, "My Cart",Toast.LENGTH_SHORT).show();break;
+                    default:
+                        return true;
+                }
+
+
+                return true;
+
+            }
+        });
+//
+//
     }
 
     @Override
@@ -31,8 +70,11 @@ public class SingOut extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getTitle().toString()){
-            case "singout" :
+
+        if(actionBarDrawerToggle.onOptionsItemSelected(item))
+            return true;
+
+        if (item.getTitle().toString().equals("singout")){
                 AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -45,7 +87,11 @@ public class SingOut extends AppCompatActivity {
                         Toast.makeText(SingOut.this, "failure", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+
         }
+
+
         return super.onOptionsItemSelected(item);
     }
 }
