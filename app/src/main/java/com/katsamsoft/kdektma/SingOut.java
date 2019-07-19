@@ -3,6 +3,7 @@ package com.katsamsoft.kdektma;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -90,7 +91,7 @@ public class SingOut extends AppCompatActivity {
 
 
         }
-
+Log.d("a","a");
 
         return super.onOptionsItemSelected(item);
     }
